@@ -2650,9 +2650,10 @@ static PyObject* _cbson_element_to_dict(PyObject* self, PyObject* args) {
     }
 
     result_tuple = Py_BuildValue("OOi", name, value, new_position);
+    Py_DECREF(name);
+    Py_DECREF(value);
+
     if (!result_tuple) {
-        Py_DECREF(name);
-        Py_DECREF(value);
         return NULL;
     }
 
